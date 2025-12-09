@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "S45ov14ssSMnGAQ4xsDgw9+NAxf6EpPycB5S0Vi6wLM=",
+  "Source": "FlightReservations",
+  "BasePath": "_content/FlightReservations",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
