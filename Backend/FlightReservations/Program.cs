@@ -1,4 +1,5 @@
 using FlightReservations.Data;
+using FlightReservations.Services;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -13,6 +14,9 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddSingleton<JwtKeyProvider>();
+builder.Services.AddScoped<AuthService>();
+
 
 var app = builder.Build();
 

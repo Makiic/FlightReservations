@@ -1,0 +1,30 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build folders
+bin/
+obj/
+
+# Rider / IntelliJ
+.idea/
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+
+# Dotnet core publish
+publish/
+
+# Logs
+*.log
+
+# Node (ako imaš frontend)
+node_modules/
+
+# JetBrains
+*.iml
