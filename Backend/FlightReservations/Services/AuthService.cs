@@ -2,33 +2,41 @@
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Text;
 
 namespace FlightReservations.Services
 {
     public class AuthService
     {
-        private readonly JwtKeyProvider _keyProvider;
+        private readonly IConfiguration _config;
 
-        public AuthService(JwtKeyProvider keyProvider)
+        public AuthService(IConfiguration config)
         {
-            _keyProvider = keyProvider;
+            _config = config;
         }
 
         public string GenerateJwtToken(User user)
         {
+            var secretKey = _config["JwtSettings:SecretKey"];
+            var keyBytes = Encoding.UTF8.GetBytes(secretKey);
+
+            var tokenHandler = new JwtSecurityTokenHandler();
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Username),
-                new Claim(ClaimTypes.Role, user.Role.ToString())
-            }),
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                    new Claim(ClaimTypes.Name, user.Username),
+                    new Claim(ClaimTypes.Role, user.Role.ToString())
+                }),
+
                 Expires = DateTime.UtcNow.AddHours(1),
-                SigningCredentials = new SigningCredentials(_keyProvider.SigningKey, SecurityAlgorithms.HmacSha256Signature)
+
+                SigningCredentials = new SigningCredentials(
+                    new SymmetricSecurityKey(keyBytes),
+                    SecurityAlgorithms.HmacSha256Signature)
             };
 
-            var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
