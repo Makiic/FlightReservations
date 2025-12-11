@@ -1,6 +1,7 @@
 ﻿using FlightReservations.Data;
 using FlightReservations.DTO;
 using FlightReservations.Models;
+using FlightReservations.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -9,37 +10,25 @@ using Microsoft.AspNetCore.Mvc;
 [Route("api/[controller]")]
 public class UserController : ControllerBase
 {
-    private readonly AppDbContext _context;
-    private readonly PasswordHasher<User> _passwordHasher;
+    private readonly IUserService _userService;
 
-    public UserController(AppDbContext context)
+    public UserController(IUserService userService)
     {
-        _context = context;
-        _passwordHasher = new PasswordHasher<User>();
+        _userService = userService;
     }
 
     [HttpPost("register")]
     [Authorize(Roles = "Administrator")]
     public IActionResult Register([FromBody] RegisterRequestDTO request)
     {
-        if (_context.Users.Any(u => u.Username == request.Username))
-            return BadRequest("Username already exists");
-
-        var newUser = new User
+        try
         {
-            Name = request.Name,
-            Username = request.Username,
-            Email = request.Email,
-            PhoneNumber = request.PhoneNumber,
-            Role = request.Role,
-            Password= request.Password,
-        };
-
-        
-
-        _context.Users.Add(newUser);
-        _context.SaveChanges();
-
-        return Ok("Succsesfull");
+            var user = _userService.Register(request);
+            return Ok("Successfully registered user " + user.Username);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 }
