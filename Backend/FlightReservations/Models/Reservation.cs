@@ -7,7 +7,7 @@ namespace FlightReservations.Models
         public int Id { get; set; }
         public int FlightId { get; set; }
         public Flight Flight { get; set; }
-        public int VisitorId { get; set; }
+        public int UserId { get; set; }
         public User User { get; set; }
         public ReservationStatus Status { get; set; } = ReservationStatus.Pending;
         public int ReservedSeats { get; set; }
