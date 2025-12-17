@@ -1,0 +1,31 @@
+<h2 class="dialog-title">
+  Reserve Flight
+  <button class="close-btn" type="button" (click)="close()">✕</button>
+</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()" class="dialog-form">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Seats</mat-label>
+    <input matInput type="number" formControlName="reservedSeats">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Seat Class</mat-label>
+    <mat-select formControlName="seatClass">
+      <mat-option [value]="SeatClass.Economy">Economy</mat-option>
+      <mat-option [value]="SeatClass.Business">Business</mat-option>
+      <mat-option [value]="SeatClass.FirstClass">First</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Bags</mat-label>
+    <input matInput type="number" formControlName="bags">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" class="reserve-btn">
+    Reserve
+  </button>
+
+</form>

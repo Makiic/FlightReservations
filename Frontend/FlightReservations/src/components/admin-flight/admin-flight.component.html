@@ -1,0 +1,46 @@
+<div class="admin-wrapper">
+
+  <!-- HEADER -->
+  <header class="admin-header">
+    <h1>Admin Panel</h1>
+    <div class="header-buttons">
+      <button mat-raised-button color="primary" (click)="openRegisterModal()">
+        Add User
+      </button>
+     
+    </div>
+  </header>
+
+  <!-- LOADING -->
+  <div *ngIf="loading" class="spinner-wrapper">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <!-- FLIGHTS GRID -->
+  <div class="flights-grid" *ngIf="!loading && flights.length">
+    <mat-card *ngFor="let f of flights" class="flight-card">
+      <mat-card-title>
+        {{ getCityName(f.departureCity) }} → {{ getCityName(f.arrivalCity) }}
+      </mat-card-title>
+      <mat-card-content>
+        <p><strong>Date:</strong> {{ f.flightDate | date:'short' }}</p>
+        <p><strong>Total Seats:</strong> {{ f.totalSeats }}</p>
+        <p><strong>Available Seats:</strong> {{ f.availableSeats }}</p>
+        <p *ngIf="f.availableSeats < 5" class="warning-text">
+          Hurry! Only {{ f.availableSeats }} seats left!
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="warn" (click)="deleteFlight(f.id)">
+          Delete
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <!-- EMPTY -->
+  <div *ngIf="!loading && flights.length === 0">
+    <p>No flights available.</p>
+  </div>
+
+</div>

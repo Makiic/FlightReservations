@@ -1,0 +1,51 @@
+<div class="futuristic-login-wrapper">
+  <div class="login-container">
+    <div class="login-box">
+      <h2>Register</h2>
+
+
+      <form *ngIf="showForm" (submit)="onSubmit($event)">
+        <div class="input-group">
+          <label for="name">Name</label>
+          <input id="name" type="text" [(ngModel)]="name" name="name" required />
+        </div>
+
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input id="username" type="text" [(ngModel)]="username" name="username" required />
+        </div>
+
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input id="email" type="text" [(ngModel)]="email" name="email" required />
+        </div>
+
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input id="password" type="text" [(ngModel)]="password" name="password" required />
+        </div>
+
+        <div class="input-group">
+          <label for="phoneNumber">Phone Number</label>
+          <input id="phoneNumber" type="text" [(ngModel)]="phoneNumber" name="phoneNumber" required />
+        </div>
+
+        <div class="input-group">
+          <label for="role">Role</label>
+          <select id="role" [(ngModel)]="role" name="role" required>
+            <option [value]="UserRole.Administrator">Administrator</option>
+            <option [value]="UserRole.Agent">Agent</option>
+            <option [value]="UserRole.Visitor">Visitor</option>
+          </select>
+        </div>
+
+        <button type="submit" class="login-btn">Register</button>
+      </form>
+
+      <p class="success-message" *ngIf="!showForm && successMessage">
+        {{ successMessage }}
+      </p>
+
+    </div>
+  </div>
+</div>

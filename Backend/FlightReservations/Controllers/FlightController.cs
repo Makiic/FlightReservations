@@ -43,11 +43,11 @@ namespace FlightReservations.Controllers
 
             return Ok(flightsWithFlag);
         }
-        [HttpDelete]
+        [HttpDelete("{flightId}")]
         [Authorize(Roles = "Administrator")]
-        public IActionResult DeleteFlight(int id)
+        public IActionResult DeleteFlight(int flightId)
         {
-            _flightService.DeleteFlight(id);
+            _flightService.DeleteFlight(flightId);
 
             return Ok();
         }
@@ -58,6 +58,8 @@ namespace FlightReservations.Controllers
             var flights = _flightService.SearchFlights(search);
             return Ok(flights);
         }
+     
+
 
     }
 }

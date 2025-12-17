@@ -1,0 +1,25 @@
+<div class="reservations-wrapper">
+  <h2 class="dialog-title">
+    Moje rezervacije
+    <button class="close-btn" type="button" (click)="close()">✕</button>
+  </h2>
+
+  <div *ngIf="reservations.length; else empty" class="flights-grid">
+    <mat-card *ngFor="let r of reservations" class="flight-card">
+      <mat-card-title>{{ getCityName(r.flight.departureCity) }} → {{ getCityName(r.flight.arrivalCity) }}</mat-card-title>
+      <mat-card-content>
+        <p><strong>Datum:</strong> {{ r.flight.flightDate | date:'short' }}</p>
+        <p><strong>Mesta:</strong> {{ r.reservedSeats }}</p>
+        <p><strong>Klasa:</strong> {{ getSeatClassName(r.seatClass) }}</p>
+        <p><strong>Prtljag:</strong> {{ r.bags }}</p>
+        <p><strong>Status:</strong> {{ getStatusName(r.status) }}</p>
+        <p><strong>Cena:</strong> ${{ r.price }}</p>
+      </mat-card-content>
+     
+    </mat-card>
+  </div>
+
+  <ng-template #empty>
+    <p>Nemate trenutno nijednu rezervaciju.</p>
+  </ng-template>
+</div>
