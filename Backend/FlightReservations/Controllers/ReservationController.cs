@@ -35,19 +35,19 @@ namespace FlightReservations.Controllers
                     return Unauthorized("User not found");
 
                 request.UserId = int.Parse(userIdClaim);
-
-                await _hubContext.Clients.All.SendAsync("ReceiveReservationUpdate", request.FlightId);
                 var reservation = await _reservationService.CreateReservation(request);
+
+                await _hubContext.Clients.All
+                    .SendAsync("ReceiveReservationUpdate", reservation.FlightId);
+
                 return Ok(reservation);
+
             }
             catch (Exception ex)
             {
                 return BadRequest(new { message = ex.Message });
             }
         }
-
-
-
 
         [HttpGet("my-reservations/{userId}")]
         [Authorize(Roles = "Visitor")]
@@ -65,9 +65,14 @@ namespace FlightReservations.Controllers
         [Authorize(Roles = "Agent")]
         public async Task<IActionResult> ApproveReservation(int reservationId)
         {
+           
+
             var result = await _reservationService.ApproveReservation(reservationId);
             if (!result)
                 return BadRequest("Unable to approve reservation");
+
+            await _hubContext.Clients.All
+                .SendAsync("ReceiveReservationUpdate", reservationId);
 
             return Ok(new { message = "Reservation approved successfully" });
         }
