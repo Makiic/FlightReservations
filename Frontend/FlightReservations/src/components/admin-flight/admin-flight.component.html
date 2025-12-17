@@ -1,6 +1,5 @@
 <div class="admin-wrapper">
 
-  <!-- HEADER -->
   <header class="admin-header">
     <h1>Admin Panel</h1>
     <div class="header-buttons">
@@ -11,12 +10,11 @@
     </div>
   </header>
 
-  <!-- LOADING -->
+ 
   <div *ngIf="loading" class="spinner-wrapper">
     <mat-spinner></mat-spinner>
   </div>
 
-  <!-- FLIGHTS GRID -->
   <div class="flights-grid" *ngIf="!loading && flights.length">
     <mat-card *ngFor="let f of flights" class="flight-card">
       <mat-card-title>
@@ -38,7 +36,7 @@
     </mat-card>
   </div>
 
-  <!-- EMPTY -->
+  
   <div *ngIf="!loading && flights.length === 0">
     <p>No flights available.</p>
   </div>
