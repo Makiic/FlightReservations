@@ -1,0 +1,75 @@
+.dialog-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 25px;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    border-radius: 15px;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.dialog-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 26px;
+    margin: 0 0 20px 0;
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+.close-btn {
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 10px #00ffff;
+}
+
+.dialog-form mat-form-field {
+    width: 100%;
+}
+
+
+.reserve-btn {
+    margin-top: 15px;
+    padding: 14px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #00ffff, #00aaff);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.reserve-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px #00ffff;
+}
+
+mat-form-field.ng-invalid.ng-touched {
+    box-shadow: 0 0 10px rgba(255, 75, 75, 0.7);
+    border-radius: 10px;
+}
+
+
+@media (max-width: 480px) {
+    .dialog-form {
+        padding: 20px;
+    }
+
+    .dialog-title {
+        font-size: 22px;
+    }
+}

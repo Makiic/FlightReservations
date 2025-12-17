@@ -1,0 +1,133 @@
+.futuristic-login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+
+.login-box {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    padding: 40px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+
+.login-box h2 {
+    margin-bottom: 30px;
+    font-size: 28px;
+    letter-spacing: 1px;
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #c0c0c0;
+}
+
+.input-group input,
+.input-group select {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    background: rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 10px #00ffff;
+}
+
+
+.login-btn {
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #00ffff, #00aaff);
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.login-btn:hover {
+    background: linear-gradient(45deg, #00aaff, #00ffff);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+    .login-box {
+        padding: 30px 20px;
+    }
+
+    .login-box h2 {
+        font-size: 24px;
+    }
+}
+
+.success-message {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+    animation: fadeOut 0.5s ease forwards;
+}
+
+.error-message {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}

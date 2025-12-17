@@ -8,5 +8,7 @@ namespace FlightReservations.Services.Interfaces
         Task<Reservation> CreateReservation(ReservationRequestDTO request);
         Task<IEnumerable<Reservation>> GetUserReservations(int userId);
         Task<bool> ApproveReservation(int reservationId);
+        Task<IEnumerable<Reservation>> GetReservations();
+
     }
 }

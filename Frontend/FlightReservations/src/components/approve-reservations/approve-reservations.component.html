@@ -1,0 +1,30 @@
+<div *ngIf="loading" class="spinner-wrapper">
+    <mat-spinner></mat-spinner>
+</div>
+<div class="header-menu">
+    <button class="header-link" [routerLink]="['/agent-panel']">
+        Create Flights
+    </button>
+</div>
+<div class="reservations-wrapper" *ngIf="!loading">
+    <mat-card class="reservation-card" *ngFor="let r of reservations">
+
+
+        <mat-card-content>
+            <p><strong>Departure:</strong> {{ getCityName(r.flight?.departureCity) }}</p>
+            <p><strong>Arrival:</strong> {{ getCityName(r.flight?.arrivalCity) }}</p>
+            <p><strong>Date:</strong> {{ r.flight?.flightDate | date:'short' }}</p>
+            <p><strong>Username:</strong> {{ r.user?.username || 'Unknown' }}</p>
+            <p><strong>Seats:</strong> {{ r.reservedSeats }}</p>
+            <p><strong>Class:</strong> {{ getSeatClass(r.seatClass) }}</p>
+            <p><strong>Status:</strong> {{ getStatus(r.status)}}</p>
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-raised-button color="primary" *ngIf="r.status === ReservationStatus.Pending"
+                (click)="approve(r.id)">
+                Approve
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

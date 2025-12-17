@@ -1,0 +1,53 @@
+<div class="flight-search-wrapper">
+
+  <!-- Header -->
+  <div class="header" style="display:flex; justify-content:flex-end; margin-bottom: 20px;">
+    <button mat-raised-button color="accent" (click)="openMyReservations()">My Reservations</button>
+  </div>
+
+  <!-- Filter -->
+  <div class="filter">
+    <mat-form-field appearance="fill">
+      <mat-label>Departure</mat-label>
+      <mat-select [(ngModel)]="departureCity">
+        <mat-option [value]="City.Beograd">Beograd</mat-option>
+        <mat-option [value]="City.Pristina">Pristina</mat-option>
+        <mat-option [value]="City.Nis">Niš</mat-option>
+        <mat-option [value]="City.Kraljevo">Kraljevo</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Arrival</mat-label>
+      <mat-select [(ngModel)]="arrivalCity">
+        <mat-option [value]="City.Beograd">Beograd</mat-option>
+        <mat-option [value]="City.Pristina">Pristina</mat-option>
+        <mat-option [value]="City.Nis">Niš</mat-option>
+        <mat-option [value]="City.Kraljevo">Kraljevo</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-checkbox [(ngModel)]="directOnly">Direct flights only</mat-checkbox>
+
+    <button mat-raised-button color="primary" (click)="searchFlights()">Search</button>
+    <button mat-raised-button color="warn" (click)="clearSearch()">Clear</button>
+  </div>
+
+  <!-- Flights cards -->
+  <div class="flights-grid">
+    <mat-card *ngFor="let f of flights" class="flight-card" [ngClass]="{'low-seats': f.availableSeats < 5}">
+      <mat-card-title>{{ getCityName(f.departureCity) }} → {{ getCityName(f.arrivalCity) }}</mat-card-title>
+      <mat-card-content>
+        <p>Date: {{ f.flightDate | date:'short' }}</p>
+        <p>Seats: {{ f.availableSeats }}/{{ f.totalSeats }}</p>
+        <p *ngIf="f.availableSeats < 5" class="warning-text">
+          Hurry! Only {{ f.availableSeats }} seats left!
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="accent" (click)="openReservationModal(f.id)">Reserve</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+</div>

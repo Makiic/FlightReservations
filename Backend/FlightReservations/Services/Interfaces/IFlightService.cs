@@ -9,6 +9,6 @@ namespace FlightReservations.Services.Interfaces
         IEnumerable<Flight> GetAllFlights();
         void DeleteFlight (int id);
         IEnumerable<Flight> SearchFlights(FlightSearchDTO search);
-
+        
     }
 }

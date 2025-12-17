@@ -24,7 +24,8 @@ public class UserController : ControllerBase
         try
         {
             var user = _userService.Register(request);
-            return Ok("Successfully registered user " + user.Username);
+            return Ok(new { message = "Successfully registered user" });
+
         }
         catch (Exception ex)
         {

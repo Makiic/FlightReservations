@@ -1,0 +1,182 @@
+
+button[routerLink] {
+  margin: 20px;
+  padding: 10px 22px;
+
+  background: transparent !important;
+  color: #00ffff !important;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  border-radius: 0;
+  border: none;
+  border-bottom: 2px solid rgba(0, 255, 255, 0.6);
+
+  box-shadow: none;
+  transition: all 0.25s ease;
+}
+.header-menu {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px 20px;
+}
+
+.header-link {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+
+  color: #00ffff;
+
+  padding: 6px 0;
+  position: relative;
+
+  transition: color 0.25s ease;
+}
+
+.header-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: #00ffff;
+  transition: width 0.3s ease;
+}
+
+.header-link:hover {
+  color: #ffffff;
+}
+
+.header-link:hover::after {
+  width: 100%;
+}
+
+.header-link:active {
+  transform: translateY(1px);
+}
+
+
+.header-link.mat-button,
+.header-link.mat-raised-button {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+
+
+button[routerLink]:hover {
+  color: #ffffff !important;
+  border-bottom-color: #00ffff;
+}
+
+
+button[routerLink]:active {
+  transform: translateY(1px);
+}
+
+
+button[routerLink].mat-accent,
+button[routerLink].mat-primary {
+  background: transparent !important;
+}
+
+
+
+button[routerLink]:active {
+  transform: scale(0.97);
+}
+
+
+button[routerLink].mat-accent,
+button[routerLink].mat-primary {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #00ffff !important;
+}
+
+
+.spinner-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+.reservations-wrapper {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+}
+
+
+.reservations-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+
+.reservation-card {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reservation-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+}
+
+.reservation-card mat-card-content p {
+  margin: 6px 0;
+  font-size: 15px;
+  color: #e0e0e0;
+}
+
+.reservation-card mat-card-content strong {
+  color: #00ffff;
+}
+
+
+.reservation-card mat-card-actions {
+  margin-top: 15px;
+}
+
+
+.reservation-card mat-card-actions button {
+  width: 100%;
+  border-radius: 10px;
+  font-weight: bold;
+  background: linear-gradient(45deg, #22c55e, #16a34a);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.6);
+}
+
+.reservation-card mat-card-actions button:hover {
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.9);
+}
+
+
+.reservation-card p:has(strong:contains("Status")) {
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .reservations-wrapper {
+    padding: 20px;
+    grid-template-columns: 1fr;
+  }
+}

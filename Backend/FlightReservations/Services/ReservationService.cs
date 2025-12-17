@@ -4,6 +4,7 @@ using FlightReservations.Enums;
 using FlightReservations.Hubs;
 using FlightReservations.Models;
 using FlightReservations.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 
@@ -84,5 +85,13 @@ namespace FlightReservations.Services
 
             return true;
         }
+        public async Task<IEnumerable<Reservation>> GetReservations()
+        {
+            return await _dbContext.Reservations
+                .Include(r => r.Flight)
+                .Include(r=>r.User)
+                .ToListAsync();
+        }
+
     }
 }
