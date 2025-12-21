@@ -123,3 +123,12 @@
     padding: 20px;
   }
 }
+.success-message {
+  color: #4caf50;
+  margin-top: 10px;
+}
+
+.error-message {
+  color: #f44336;
+  margin-top: 10px;
+}

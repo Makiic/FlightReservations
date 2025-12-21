@@ -4,36 +4,44 @@
 
     <form (submit)="createFlight($event)">
 
-
+      <!-- Gradovi -->
       <div class="form-row">
         <mat-form-field appearance="fill">
           <mat-label>Departure</mat-label>
-         <mat-select [(ngModel)]="departureCity" name="departureCity" required>
-  <mat-option *ngFor="let c of cityOptions" [value]="c.value">{{ c.name }}</mat-option>
-</mat-select>
+          <mat-select [(ngModel)]="departureCity" name="departureCity" required>
+            <mat-option *ngFor="let c of cityOptions" [value]="c.value">
+              {{ c.name }}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Arrival</mat-label>
-         <mat-select [(ngModel)]="arrivalCity" name="arrivalCity" required>
-  <mat-option *ngFor="let c of cityOptions" [value]="c.value">{{ c.name }}</mat-option>
-</mat-select>
+          <mat-select [(ngModel)]="arrivalCity" name="arrivalCity" required>
+            <mat-option *ngFor="let c of cityOptions" [value]="c.value">
+              {{ c.name }}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
 
-
+      <!-- Datum i layovers -->
       <div class="form-row">
         <mat-form-field appearance="fill">
-          <mat-label>Date</mat-label>
-          <input matInput [matDatepicker]="picker" name="flightDate" required>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-          <mat-label>Time</mat-label>
-          <input matInput type="time" name="flightTime" required>
-        </mat-form-field>
+          <mat-label>Date & Time</mat-label>
+          <input
+            matInput
+            type="datetime-local"
+            name="flightDate"
+            [(ngModel)]="flightDateValue"
+            [min]="minDateTime"
+            required
+            #dateInput="ngModel"
+            (input)="dateError = ''"
+          >
+           </mat-form-field>
+          <mat-error *ngIf="dateError">{{ dateError }}</mat-error>
+       
 
         <mat-form-field appearance="fill">
           <mat-label>Layovers</mat-label>
@@ -41,6 +49,7 @@
         </mat-form-field>
       </div>
 
+      
       <div class="form-row">
         <mat-form-field appearance="fill">
           <mat-label>Total Seats</mat-label>
@@ -48,11 +57,18 @@
         </mat-form-field>
       </div>
 
-      <button class="submit-btn" type="submit">Create Flight</button>
+    
+      <button mat-raised-button color="primary" type="submit">
+        Create Flight
+      </button>
+
+      
+      <p class="success-message" *ngIf="successMessage">{{ successMessage }}</p>
+      <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
     </form>
   </mat-card>
 
-
+ 
   <div class="flights-grid">
     <mat-card *ngFor="let f of flights" class="flight-item"
       [ngClass]="{'low-seats': f.availableSeats < 5, 'normal-seats': f.availableSeats >= 5}">
