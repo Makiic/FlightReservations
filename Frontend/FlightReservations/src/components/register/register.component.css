@@ -9,6 +9,7 @@
 /* ===== REGISTER BOX ===== */
 .login-box {
     background:linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    
     padding: 14px 16px 16px;
     width: 100%;
     max-width: 340px;

@@ -1,7 +1,4 @@
-﻿
-
-using FlightReservations.Enums;
-
+﻿using FlightReservations.Enums;
 namespace FlightReservations.DTO
 {
     public class RegisterRequestDTO

@@ -100,17 +100,13 @@ export class FlightSearchComponent implements OnInit {
     });
   }
   clearSearch() {
-    const body = {
-      departureCity: null,
-      arrivalCity: null,
-      directOnly: false
-    };
+    this.departureCity = null;
+  this.arrivalCity = null;
+  this.directOnly = false;
+   this.flights = [];
     this.signalR.startConnection();
-
-    this.flightService.searchFlights(body).subscribe({
-      next: (res) => this.flights = res,
-      error: (err) => console.error('Search error:', err)
-    });
+  this.searchFlights();
+    
   }
 
 }
