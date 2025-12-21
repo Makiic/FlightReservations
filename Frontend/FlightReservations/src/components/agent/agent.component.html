@@ -8,22 +8,16 @@
       <div class="form-row">
         <mat-form-field appearance="fill">
           <mat-label>Departure</mat-label>
-          <mat-select name="departureCity" required>
-            <mat-option [value]="City.Beograd">Beograd</mat-option>
-            <mat-option [value]="City.Pristina">Pristina</mat-option>
-            <mat-option [value]="City.Nis">Niš</mat-option>
-            <mat-option [value]="City.Kraljevo">Kraljevo</mat-option>
-          </mat-select>
+         <mat-select [(ngModel)]="departureCity" name="departureCity" required>
+  <mat-option *ngFor="let c of cityOptions" [value]="c.value">{{ c.name }}</mat-option>
+</mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Arrival</mat-label>
-          <mat-select name="arrivalCity" required>
-            <mat-option [value]="City.Beograd">Beograd</mat-option>
-            <mat-option [value]="City.Pristina">Pristina</mat-option>
-            <mat-option [value]="City.Nis">Niš</mat-option>
-            <mat-option [value]="City.Kraljevo">Kraljevo</mat-option>
-          </mat-select>
+         <mat-select [(ngModel)]="arrivalCity" name="arrivalCity" required>
+  <mat-option *ngFor="let c of cityOptions" [value]="c.value">{{ c.name }}</mat-option>
+</mat-select>
         </mat-form-field>
       </div>
 

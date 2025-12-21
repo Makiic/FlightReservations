@@ -1,133 +1,100 @@
-.futuristic-login-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* ===== DIALOG (Angular Material) ===== */
+.custom-dialog .mat-dialog-container {
+    padding: 0 !important;
+    background: transparent;
+    border-radius: 16px;
+    box-shadow: none;
 }
 
-.login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 20px;
-}
-
-
+/* ===== REGISTER BOX ===== */
 .login-box {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
-    border-radius: 15px;
-    padding: 40px;
-    max-width: 400px;
+    background:linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    padding: 14px 16px 16px;
     width: 100%;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 340px;
+    box-shadow: 0 6px 24px rgba(0, 255, 255, 0.18);
+    border: 1px solid rgba(0, 255, 255, 0.25);
+    color: #ffffff;
 }
 
-.login-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
-}
-
+/* ===== TITLE ===== */
 .login-box h2 {
-    margin-bottom: 30px;
-    font-size: 28px;
-    letter-spacing: 1px;
-    color: #00ffff;
-    text-shadow: 0 0 10px #00ffff;
+    margin: 0 0 10px;
+    font-size: 19px;
+    font-weight: 600;
+    text-align: left;
+    color: #00eaff;
+    text-shadow: 0 0 6px rgba(0, 234, 255, 0.6);
 }
 
-
+/* ===== INPUT GROUP ===== */
 .input-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
-    text-align: left;
+    margin-bottom: 8px;
 }
 
 .input-group label {
-    margin-bottom: 5px;
-    font-size: 14px;
-    color: #c0c0c0;
+    font-size: 11px;
+    margin-bottom: 2px;
+    color: #b0bec5;
 }
 
+/* ===== INPUTS ===== */
 .input-group input,
 .input-group select {
-    padding: 12px 15px;
+    height: 32px;
+    padding: 4px 8px;
+    border-radius: 6px;
     border: none;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    font-size: 16px;
     outline: none;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
+    font-size: 12.5px;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+    box-sizing: border-box;
 }
 
+/* ===== INPUT FOCUS ===== */
 .input-group input:focus,
 .input-group select:focus {
-    background: rgba(0, 255, 255, 0.1);
-    box-shadow: 0 0 10px #00ffff;
+    background: rgba(0, 255, 255, 0.08);
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.6);
 }
 
+/* ===== SELECT FIX ===== */
+.input-group select option {
+    background: #0e141a;
+    color: #ffffff;
+}
 
+/* ===== BUTTON ===== */
 .login-btn {
+    margin-top: 6px;
     width: 100%;
-    padding: 12px 20px;
+    height: 36px;
     border: none;
-    border-radius: 10px;
-    background: linear-gradient(45deg, #00ffff, #00aaff);
-    color: #fff;
-    font-size: 18px;
-    font-weight: bold;
+    border-radius: 8px;
+    font-size: 13.5px;
+    font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
+    color: #ffffff;
+    background: linear-gradient(135deg, #00eaff, #0077ff);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .login-btn:hover {
-    background: linear-gradient(45deg, #00aaff, #00ffff);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0, 234, 255, 0.6);
 }
 
+/* ===== MOBILE ===== */
 @media (max-width: 480px) {
     .login-box {
-        padding: 30px 20px;
+        max-width: 95vw;
+        padding: 12px 14px;
     }
 
     .login-box h2 {
-        font-size: 24px;
-    }
-}
-
-.success-message {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px 15px;
-    margin-top: 10px;
-    border-radius: 5px;
-    animation: fadeOut 0.5s ease forwards;
-}
-
-.error-message {
-    background-color: #f44336;
-    color: white;
-    padding: 10px 15px;
-    margin-top: 10px;
-    border-radius: 5px;
-}
-
-
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-    }
-
-    to {
-        opacity: 0;
+        font-size: 18px;
     }
 }

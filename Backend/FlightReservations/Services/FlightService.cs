@@ -39,7 +39,7 @@ namespace FlightReservations.Services
         }
         public void DeleteFlight(int id)
         {
-            // Pronađi let
+            
             var existingFlight = _dbContext.Flights.FirstOrDefault(f => f.Id == id);
             if (existingFlight == null)
                 return;

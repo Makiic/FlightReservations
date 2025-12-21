@@ -18,7 +18,7 @@ export class FlightService {
   constructor(private http: HttpClient) {}
 
 createFlight(flight: FlightDTO): Observable<FlightDTO> {
-    const token = localStorage.getItem('token'); // JWT token
+    const token = localStorage.getItem('token'); 
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'

@@ -27,20 +27,24 @@ export class MyReservationsComponent implements OnInit {
     private reservationService: ReservationService,
     private signalRService: SignalRService,
     private dialogRef: MatDialogRef<MyReservationsComponent>
-  ) { }
+  ) {}
 
   ngOnInit(): void {
+    this.loadReservations();
 
-    this.reservationService.getUserReservations(this.currentUserId).subscribe(res => {
-      this.reservations = res;
-    });
-
-
-    this.signalRService.reservations$.subscribe(reservations => {
-      this.reservations = reservations.filter(r => r.userId === this.currentUserId);
-    });
+    this.signalRService.reservationUpdated$
+      .subscribe(() => {
+        this.loadReservations();
+      });
   }
 
+  loadReservations() {
+    this.reservationService
+      .getUserReservations(this.currentUserId)
+      .subscribe(res => {
+        this.reservations = res;
+      });
+  }
 
   getCityName(id: number) {
     return City[id] ?? 'Nepoznat grad';
@@ -57,5 +61,4 @@ export class MyReservationsComponent implements OnInit {
   close() {
     this.dialogRef.close();
   }
-
 }

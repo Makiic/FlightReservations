@@ -1,6 +1,6 @@
 export enum City {
   Beograd = 0,
-  Pristina = 1,
-  Nis = 2,
-  Kraljevo = 3
+  Nis = 1,
+  Kraljevo = 2,
+  Pristina = 3  
 }

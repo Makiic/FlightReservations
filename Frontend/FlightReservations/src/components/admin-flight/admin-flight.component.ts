@@ -71,15 +71,14 @@ export class AdminFlightComponent implements OnInit {
       default: return 'Nepoznato';
     }
   }
-  openRegisterModal() {
-    this.dialog.open(RegisterComponent, {
-      width: '400px'
-    }).afterClosed().subscribe(result => {
-      if (result) {
-        console.log('Dialog closed after successful register');
-      }
-    });
+ openRegisterModal() {
+  this.dialog.open(RegisterComponent, {
+    width: '390px',
+   
+    panelClass: 'custom-dialog',
+    autoFocus: false
+  });
+}
 
-  }
 
 }

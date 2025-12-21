@@ -2,7 +2,7 @@
 {
     public enum City
     {
-        Belgrade,
+        Beograd,
         Nis,
         Kraljevo,
         Pristina

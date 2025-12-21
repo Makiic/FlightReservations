@@ -45,7 +45,8 @@ export class FlightSearchComponent implements OnInit {
 
   ngOnInit() {
     this.signalR.startConnection();
-    this.signalR.reservationsUpdated.subscribe(() => this.searchFlights());
+    this.signalR.reservationUpdated$.subscribe(() => this.searchFlights());
+     this.searchFlights();  
   }
   searchFlights() {
     const body = {

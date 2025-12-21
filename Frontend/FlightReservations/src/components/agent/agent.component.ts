@@ -35,8 +35,15 @@ export class AgentComponent implements OnInit {
   successMessage = '';
   errorMessage = '';
   readonly City = City;
+  departureCity: City = City.Beograd;
+arrivalCity: City = City.Beograd;
   constructor(private flightService: FlightService) {}
-
+cityOptions = [
+  { value: City.Beograd, name: 'Beograd' },
+  { value: City.Pristina, name: 'Pristina' },
+  { value: City.Nis, name: 'Niš' },
+  { value: City.Kraljevo, name: 'Kraljevo' },
+];
   ngOnInit() {
     this.loadFlights();
   }
@@ -62,14 +69,14 @@ getCityName(city: City): string {
     const formData = new FormData(form);
 
     const flight: FlightDTO = {
-      departureCity: Number(formData.get('departureCity')) as unknown as City,
-      arrivalCity:   Number(formData.get('arrivalCity')) as unknown as City,
-      flightDate:    new Date(formData.get('flightDate') as string).toISOString(),
-      layovers:      Number(formData.get('layovers')),
-      totalSeats:    Number(formData.get('totalSeats')),
-      availableSeats:Number(formData.get('totalSeats')),
-      isCanceled:    false
-    };
+  departureCity: this.departureCity,
+  arrivalCity: this.arrivalCity,
+  flightDate: new Date(formData.get('flightDate') as string).toISOString(),
+  layovers: Number(formData.get('layovers')),
+  totalSeats: Number(formData.get('totalSeats')),
+  availableSeats: Number(formData.get('totalSeats')),
+  isCanceled: false
+};
 
     this.flightService.createFlight(flight).subscribe({
       next: () => {
